@@ -1,0 +1,30 @@
+function getTextElementById(elementId){
+    const element = document.getElementById(elementId).innerText;
+    // const elementValueString = element.innerText;
+
+    const elementValue = parseInt(element);
+    return(elementValue);
+}
+function setTextElementById(elementId, value){
+    const element = document.getElementById(elementId);
+    element.innerText = value;
+}
+function calculateTotal(){
+    const phoneTotal = getTextElementById('phone-total');
+    const caseTotal = getTextElementById('case-total');
+    const subTotal = phoneTotal + caseTotal;
+    
+    setTextElementById('sub-total', subTotal);
+
+    // calculate Tax
+
+    const tax = (subTotal * 0.1).toFixed(2);
+    const taxAmount = parseFloat(tax);
+    setTextElementById('tax-total', taxAmount);
+
+
+    // calculate Final Total
+    const finalTotalAmount = subTotal + taxAmount;
+    setTextElementById('final-total', finalTotalAmount);
+
+}
